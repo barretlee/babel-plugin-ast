@@ -1,0 +1,20 @@
+{
+  "name": "babel-plugin-ast",
+  "version": "0.0.1",
+  "description": "babel plugin ast",
+  "keywords": [
+    "babel",
+    "plugin",
+    "ast"
+  ],
+  "author": "Barret Lee <barret.china@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-generator": "^6.26.1",
+    "babel-template": "^6.26.0",
+    "babel-traverse": "^6.26.0",
+    "babel-types": "^6.26.0",
+    "babylon": "^6.18.0"
+  }
+}
