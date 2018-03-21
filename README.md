@@ -29,6 +29,8 @@ const ast = babylon.parse(code, {
 遍历节点，筛选遍历
 
 ```js
+const traversal = require('babel-traverse').default;
+
 traversal(ast, {
   Identifier: function (path) {
     console.log(path.node.name);
