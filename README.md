@@ -12,3 +12,88 @@ babel 插件的[官方手册](https://github.com/jamiebuilds/babel-handbook/blob
 
 - [babylon AST 规范](https://github.com/babel/babylon/blob/master/ast/spec.md)
 - [AST 在线分析工具](https://astexplorer.net/)
+
+
+### Parser
+
+```js
+const babylon = require('babylon');
+
+const code = `
+function plus(a, b) {
+  return a + b;
+}
+`;
+const ast = babylon.parse(code, {
+  sourceType: 'module'
+});
+```
+
+### traversal
+
+遍历节点，筛选遍历
+
+```js
+traversal(ast, {
+  Identifier: function (path) {
+    console.log(path.node.name);
+  }
+});
+```
+
+进出节点
+
+```js
+traversal(ast, {
+  Identifier: {
+    enter: function (path) {
+      console.log(path.node.name, 'enter');
+    }, 
+    exit: function (path) {
+      console.log(path.node.name, 'exit\n');
+    }
+  }
+});
+```
+
+局部遍历
+
+```js
+traversal(ast, {
+  FunctionDeclaration: function (path) {
+    if (path.node.id.name !== 'plus') return;
+    path.traverse({
+      Identifier: {
+        enter: function (path) {
+          console.log(path.node.name, 'enter');
+        }, 
+        exit: function (path) {
+          console.log(path.node.name, 'exit\n');
+        }
+      }
+    });
+  }
+});
+```
+
+### transform
+
+```js
+traversal(ast, {
+  FunctionDeclaration: function (path) {
+    path.traverse({
+      Identifier: {
+        enter: function (path) {
+          if (types.isIdentifier(path.node, { name: "a" })) {
+            // 节点替换
+            path.replaceWith(types.Identifier('x'), path.node);
+          }
+        },
+        exit: function (path) {
+          console.log(path.node.name);
+        }
+      }
+    });
+  }
+});
+```
