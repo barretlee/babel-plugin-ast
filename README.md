@@ -8,11 +8,6 @@ babel 插件的[官方手册](https://github.com/jamiebuilds/babel-handbook/blob
 
 针对上图中的 Parser、Traversal、Transform、Generator 分别写了几个简单的 Demo，跟着一步一步来，结合文档，应该可以完全掌握。
 
-在做 AST 转换的时候，下面两个东西可以很大程度帮到你：
-
-- [babylon AST 规范](https://github.com/babel/babylon/blob/master/ast/spec.md)
-- [AST 在线分析工具](https://astexplorer.net/)
-
 
 ### Parser
 
@@ -97,3 +92,10 @@ traversal(ast, {
   }
 });
 ```
+
+### 工具
+
+在做 AST 转换的时候，下面两个东西可以很大程度帮到你：
+
+- [babylon AST 规范](https://github.com/babel/babylon/blob/master/ast/spec.md)
+- [AST 在线分析工具](https://astexplorer.net/)
